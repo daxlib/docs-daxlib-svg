@@ -1,0 +1,298 @@
+DEFINE
+function DaxLib.SVG.Util.NormalizeAxis  =
+			(
+				contextTable: ANYREF EXPR,
+				xAxis: ANYREF EXPR,
+				measureRef: NUMERIC EXPR,
+				isNumeric: BOOLEAN
+			) =>
+
+				// VAR _All_Categories =
+				// 		FILTER(
+				// 			KEEPFILTERS( VALUES( xAxis ) ),
+				// 			NOT ISBLANK( measureRef )
+				// 		)
+				// 
+				// VAR _FilteredTable = 
+				// 		FILTER(
+				// 			KEEPFILTERS( contextTable ),
+				// 			NOT ISBLANK( measureRef )
+				// 		)
+
+				VAR _FilteredTable = 
+					ADDCOLUMNS(
+						FILTER(
+							KEEPFILTERS( contextTable ),
+							NOT ISBLANK( measureRef )
+						),
+						"@XAxis", xAxis,
+						"@MeasureValue", measureRef
+					)
+				
+				// VAR _NumericData = 
+				// 	ADDCOLUMNS(
+				// 		_FilteredTable,
+				// 		"Value", measureRef,
+				// 		"XValue", xAxis
+				// 	)
+
+				VAR _NumericData = 
+					SELECTCOLUMNS(
+						_FilteredTable,
+						"Value", [@MeasureValue],
+						"XValue", [@XAxis]
+					)
+				
+				// VAR _CategoricalData = 
+				// 	ADDCOLUMNS(
+				// 		SUBSTITUTEWITHINDEX(
+				// 			_FilteredTable,
+				// 			"GroupIndex",
+				// 			_All_Categories,
+				// 			xAxis,
+				// 			ASC
+				// 		),
+				// 		"Value", measureRef,
+				// 		"XValue", [GroupIndex]
+				// 	)
+
+				VAR _CategoricalData = 
+					// Get unique categories with a stable column name
+					VAR _CategoryMeasures = 
+						SELECTCOLUMNS(
+							SUMMARIZE( _FilteredTable, [@XAxis] ),
+							"@Category", [@XAxis]
+						)
+					VAR _WithValues = 
+						ADDCOLUMNS(
+							_CategoryMeasures,
+							"@MeasureValue", 
+								VAR _Cat = [@Category]
+								RETURN
+									CALCULATE(
+										measureRef,
+										KEEPFILTERS( [@XAxis] = _Cat )
+									)
+						)
+
+					
+					// Filter out blanks
+					VAR _NonBlank = FILTER( _WithValues, NOT ISBLANK( [@MeasureValue] ) )
+					// Add sequential index using RANKX on the @Category column
+					VAR _WithIndex = 
+						ADDCOLUMNS(
+							_NonBlank,
+							"GroupIndex",
+								RANKX(
+									_NonBlank,
+									[@Category],
+									,
+									ASC,
+									DENSE
+								)
+						)
+					// Return with standardized column names
+					RETURN
+						SELECTCOLUMNS(
+							_WithIndex,
+							"Value", [@MeasureValue],
+							"XValue", [GroupIndex]
+						)
+				
+				RETURN
+
+				// 	UNION(
+				// 		TOPN( IF( isNumeric, COUNTROWS( _NumericData ), 0 ), _NumericData ),
+				// 		TOPN( IF( NOT isNumeric, COUNTROWS( _CategoricalData ), 0 ), _CategoricalData )
+				// 	)
+				
+					UNION(
+						TOPN( IF( isNumeric, COUNTROWS( _NumericData ), 0 ), _NumericData ),
+						TOPN( IF( NOT isNumeric, COUNTROWS( _CategoricalData ), 0 ), _CategoricalData )
+					)
+
+
+function DaxLib.SVG.Util.NormalizeAxisAllSelected  =
+			(
+				contextTable: ANYREF EXPR,
+				xAxis: ANYREF EXPR,
+				measureRef: NUMERIC EXPR,
+				isNumeric: BOOLEAN
+			) =>
+
+				// VAR _All_Categories =
+				// 	CALCULATETABLE(
+				// 		FILTER(
+				// 			KEEPFILTERS( VALUES( xAxis ) ),
+				// 			NOT ISBLANK( measureRef )
+				// 		),
+				// 		ALLSELECTED()
+				// 	)
+				// 
+				// VAR _FilteredTable = 
+				// 	CALCULATETABLE(
+				// 		FILTER(
+				// 			KEEPFILTERS( contextTable ),
+				// 			NOT ISBLANK( measureRef )
+				// 		),
+				// 		ALLSELECTED()
+				// 	)
+
+				VAR _FilteredTable = 
+					CALCULATETABLE(
+						ADDCOLUMNS(
+							FILTER(
+								KEEPFILTERS( contextTable ),
+								NOT ISBLANK( measureRef )
+							),
+							"@XAxis", xAxis,
+							"@MeasureValue", measureRef
+						),
+						ALLSELECTED()
+					)
+				
+				VAR _NumericData = 
+					SELECTCOLUMNS(
+						_FilteredTable,
+						"Value", [@MeasureValue],
+						"XValue", [@XAxis]
+					)
+				
+				VAR _CategoricalData = 
+					// Get unique categories from the already-captured @XAxis column
+					VAR _CategoryMeasures = 
+						SELECTCOLUMNS(
+							CALCULATETABLE(
+								SUMMARIZE( _FilteredTable, [@XAxis] ),
+								ALLSELECTED()
+							),
+							"@Category", [@XAxis]
+						)
+					VAR _WithValues = 
+						ADDCOLUMNS(
+							_CategoryMeasures,
+							"@MeasureValue", 
+								VAR _Cat = [@Category]
+								RETURN
+									CALCULATE(
+										measureRef,
+										KEEPFILTERS( [@XAxis] = _Cat ),
+										ALLSELECTED()
+									)
+						)
+					// Filter out blanks
+					VAR _NonBlank = FILTER( _WithValues, NOT ISBLANK( [@MeasureValue] ) )
+					// Add sequential index using RANKX on the @Category column
+					VAR _WithIndex = 
+						ADDCOLUMNS(
+							_NonBlank,
+							"GroupIndex",
+								RANKX(
+									_NonBlank,
+									[@Category],
+									,
+									ASC,
+									DENSE
+								)
+						)
+					// Return with standardized column names
+					RETURN
+						SELECTCOLUMNS(
+							_WithIndex,
+							"Value", [@MeasureValue],
+							"XValue", [GroupIndex]
+						)
+				
+				RETURN
+					UNION(
+						TOPN( IF( isNumeric, COUNTROWS( _NumericData ), 0 ), _NumericData ),
+						TOPN( IF( NOT isNumeric, COUNTROWS( _CategoricalData ), 0 ), _CategoricalData )
+					)
+
+				
+				// 
+				// VAR _NumericData = 
+				// 	ADDCOLUMNS(
+				// 		_FilteredTable,
+				// 		"Value", measureRef,
+				// 		"XValue", xAxis
+				// 	)
+				// 
+				// VAR _CategoricalData = 
+				// 	ADDCOLUMNS(
+				// 		SUBSTITUTEWITHINDEX(
+				// 			_FilteredTable,
+				// 			"GroupIndex",
+				// 			_All_Categories,
+				// 			xAxis,
+				// 			ASC
+				// 		),
+				// 		"Value", measureRef,
+				// 		"XValue", [GroupIndex]
+				// 	)
+				// 
+				// RETURN
+				// 
+				// 	UNION(
+				// 		TOPN( IF( isNumeric, COUNTROWS( _NumericData ), 0 ), _NumericData ),
+				// 		TOPN( IF( NOT isNumeric, COUNTROWS( _CategoricalData ), 0 ), _CategoricalData )
+				// 	)
+
+function DaxLib.SVG.Sparkline.Line =
+			(
+				width: INT64,
+				height: INT64,
+				contextTable: ANYREF EXPR,
+				xAxis: ANYREF EXPR,
+				measureRef: NUMERIC EXPR,
+				lineColour: STRING
+			) =>
+			
+				// Detect if xAxis is numeric or categorical
+				VAR _xAxisSample = 	MAX( xAxis )
+				VAR _IsNumeric = 	ISNUMERIC( _xAxisSample ) || ISDATETIME( _xAxisSample )
+
+				// Axis Scale
+				VAR _AllData = 
+					DaxLib.SVG.Util.NormalizeAxisAllSelected(
+						contextTable,
+						xAxis,
+						measureRef,
+						_IsNumeric
+					)
+						
+				VAR _XMin = 	MINX( _AllData, [XValue] )
+				VAR _XMax = 	MAXX( _AllData, [XValue] )
+				VAR _RawYMin = 	MINX( _AllData, [Value] )
+				VAR _YMin = 	IF( _RawYMin > 0, 0, _RawYMin )
+				VAR _YMax = 	MAXX( _AllData, [Value] )
+				
+				// Data in Context
+				// VAR _Data = 
+				// 		DaxLib.SVG.Util.NormalizeAxis(
+				// 			CALCULATETABLE( contextTable ),
+				// 			xAxis,
+				// 			measureRef,
+				// 			_IsNumeric
+				// 		)
+
+				RETURN
+
+					TOJSON( _AllData )
+
+EVALUATE
+ADDCOLUMNS(
+	SUMMARIZE( Products, Products[Brand] ),
+	"x", 
+	DaxLib.SVG.Sparkline.Line(
+		100,                // width
+		20,                 // height
+		SUMMARIZE( Orders, Products[Brand], Products[ProductSubcategory] ), // contextTable
+		Products[ProductSubcategory],        // xAxis
+		[Total Cost],       // measureVal
+		DaxLib.SVG.Colour.Theme(
+			MAX( Theme[Theme] ),
+			MIN( Variant[Variant] )
+		)                   // lineColour
+	)
+)
