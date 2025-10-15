@@ -21,9 +21,9 @@ For detailed examples, check out our [example PBIP file](https://github.com/daxl
 | Category | Description |
 |---|---|
 | **SVG Wrapper** | Wraps one or more `Elements`, `Defs`, `Compounds`, applying required metadata and `<SVG>` tags |
-| **[Elementsdocs/elements/index.md** | SVG primitives (i.e. `<Rect>`, `<Circle>`, `<line>`) |
-| **Compoundsdocs/compounds/index.md** | Complex components (i.e. boxplot, violin) made from `Elements` |
-| **Defsdocs/defs/index.md** | Define reusable SVG elements (i.e. `<linearGradient>`, `<clipPath>`, and shapes) |
+| **Elements** | SVG primitives (i.e. `<Rect>`, `<Circle>`, `<line>`) |
+| **Compounds** | Complex components (i.e. boxplot, violin) made from `Elements` |
+| **Defs** | Define reusable SVG elements (i.e. `<linearGradient>`, `<clipPath>`, and shapes) |
 | **Attributes** | Create Attributes (i.e. fill, stroke, opacity) string that can be applied to `Elements` and `Defs` |
 | **Transforms** | Create Transform strings |
 | **Scales** | Mapping values between scales |
