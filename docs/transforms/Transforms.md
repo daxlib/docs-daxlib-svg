@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Transforms
 
 Creates an SVG transform attribute value for applying multiple transformations to an element

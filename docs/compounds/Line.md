@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Compound.Line
 
 Generates a Line compound SVG Visual

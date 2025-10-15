@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Defs
 
 Generates a `#!xml <defs>` element from one or more `DaxLib.SVG.Def.*` elements

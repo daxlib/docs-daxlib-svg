@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Attr.Stroke
 
 Creates SVG attribute strings for comprehensive stroke styling properties

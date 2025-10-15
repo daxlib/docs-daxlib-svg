@@ -1,6 +1,3 @@
----
-comments: true
----
 # Element.Group
 
 Generates a `#!xml <g>` element. Transformations applied to the `#!xml <g>` element are performed on its child elements, and its attributes are inherited by its children. It can also group multiple elements to be referenced later with the `#!xml <use>` element.

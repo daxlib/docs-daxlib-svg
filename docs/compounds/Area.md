@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Compound.Area
 
 Generates an Area compound SVG Visual

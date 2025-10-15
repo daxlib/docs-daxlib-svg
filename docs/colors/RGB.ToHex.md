@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Color.RGB.ToHex
 
 RGB to Hex conversion

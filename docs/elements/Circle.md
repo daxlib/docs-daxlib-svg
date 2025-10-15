@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Circle
 
 Generates a `#!xml <circle>` element

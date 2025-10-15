@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.Line
 
 Generates a reusable `#!xml <line>` definition

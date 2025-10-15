@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Color.Hex.ToInt
 
 Hex to Int conversion

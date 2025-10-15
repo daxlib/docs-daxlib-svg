@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.LinearGradient
 
 Generates a reusable `#!xml <linearGradient>` definition

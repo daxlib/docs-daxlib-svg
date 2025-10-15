@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Scale.Normalize
 
 Maps a value from one scale to another. Used for scaling values to fit within SVG dimensions

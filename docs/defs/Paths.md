@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.Paths
 
 Generates a reusable `#!xml <path>` definition

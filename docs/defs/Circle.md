@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.Circle
 
 Generates a reusable `#!xml <circle>` definition

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Color.PerformanceTheme
 
 Returns a color for the specified performance level and theme

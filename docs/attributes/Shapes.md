@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Attr.Shapes
 
 Creates SVG attribute strings for common shape styling properties

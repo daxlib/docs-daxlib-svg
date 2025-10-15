@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Color.Hex.Interpolate
 
 Interpolate between two Hex colors by a given percentage

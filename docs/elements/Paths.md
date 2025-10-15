@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Paths
 
 Generates a `#!xml <path>` element

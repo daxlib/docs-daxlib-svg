@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Compound.Jitter
 
 Generates a Jitter Plot compound SVG Visual showing values as points with x-position based on value and y-position jittered around center

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Txt
 
 Generates a `#!xml <text>` SVG element

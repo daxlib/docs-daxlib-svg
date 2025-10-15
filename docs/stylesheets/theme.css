@@ -1,0 +1,105 @@
+/* Override Default Light Theme */
+[data-md-color-scheme="default"] {
+  /* Custom accent colors */
+  --accent-color: #117865;
+  --accent-hover-color: #0b5547;
+  --accent-back-color: #DBEFEB;
+  --accent-hover-back-color: #bfd7d2;
+  --accent-border-color: #a4bfba;
+  --accent-contrast-color: #fff;
+  --draft-back-color: #eaf9f6;
+  --draft-border-color: transparent;
+
+  /* Primary color shades - Header background */
+  --md-primary-fg-color: #333;
+  --md-primary-fg-color--light: #333;
+  --md-primary-fg-color--dark: #333;
+  --md-primary-bg-color: #f5f5f5;
+  --md-primary-bg-color--light: #f5f5f5;
+
+  /* Accent color shades */
+  --md-accent-fg-color: #117865;
+  --md-accent-fg-color--transparent: rgba(17, 120, 101, 0.1);
+
+  /* Typeset colors */
+  --md-typeset-a-color: #117865;
+}
+
+/* Explicit header override for light mode */
+[data-md-color-scheme="default"] .md-header {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+[data-md-color-scheme="default"] .md-header__title,
+[data-md-color-scheme="default"] .md-header__topic,
+[data-md-color-scheme="default"] .md-header__button {
+  color: #333;
+}
+
+/* Logo swap for light mode - hide dark logo, show light logo */
+[data-md-color-scheme="default"] .logo-dark {
+  display: none !important;
+}
+
+[data-md-color-scheme="default"] .logo-light {
+  display: block !important;
+}
+
+/* Page titles */
+[data-md-color-scheme="default"] .md-typeset h1 {
+  color: #117865;
+}
+
+/* Override Slate Dark Theme */
+[data-md-color-scheme="slate"] {
+  /* Custom accent colors */
+  --accent-color: #169b83;
+  --accent-hover-color: #117966;
+  --accent-back-color: #DBEFEB;
+  --accent-hover-back-color: #bfd7d2;
+  --accent-border-color: #a4bfba;
+  --accent-contrast-color: #fff;
+  --draft-back-color: #2e423e;
+  --draft-border-color: transparent;
+
+  /* Primary color shades - Header background */
+  --md-primary-fg-color: #fff;
+  --md-primary-fg-color--light: #fff;
+  --md-primary-fg-color--dark: #fff;
+  --md-primary-bg-color: #2c2c2c;
+  --md-primary-bg-color--light: #2c2c2c;
+
+  /* Accent color shades */
+  --md-accent-fg-color: #169b83;
+  --md-accent-fg-color--transparent: rgba(22, 155, 131, 0.1);
+
+  /* Typeset colors */
+  --md-typeset-a-color: #169b83;
+}
+
+/* Page titles */
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: #169b83;
+}
+
+/* Explicit header override for dark mode */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #2c2c2c;
+  color: #b3b3b3;
+}
+
+[data-md-color-scheme="slate"] .md-header__title,
+[data-md-color-scheme="slate"] .md-header__topic,
+[data-md-color-scheme="slate"] .md-header__button {
+  color: #b3b3b3;
+}
+
+/* Logo swap for dark mode - show dark logo, hide light logo */
+[data-md-color-scheme="slate"] .logo-light {
+  display: none !important;
+}
+
+[data-md-color-scheme="slate"] .logo-dark {
+  display: block !important;
+}

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Line
 
 Generates a `#!xml <line>` element

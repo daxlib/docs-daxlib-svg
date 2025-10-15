@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Color.Theme
 
 Select theme color, wrapping around to the start if variant exceeds available options

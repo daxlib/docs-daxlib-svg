@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Compound.Violin
 
 Generates a Violin Plot compound SVG Visual showing distribution density using Kernel Density Estimation (KDE)

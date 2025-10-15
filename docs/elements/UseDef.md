@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.UseDef
 
 Applies a previously defined `DaxLib.SVG.Def.*` shape element (ie. `#!xml <rect>`, `#!xml <circle>`, `#!xml <line>`, via `#!xml <use>`

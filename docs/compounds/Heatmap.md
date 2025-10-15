@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Compound.Heatmap
 
 Generates a KDE-based Heatmap compound SVG Visual using Kernel Density Estimation (KDE) for smooth color gradients

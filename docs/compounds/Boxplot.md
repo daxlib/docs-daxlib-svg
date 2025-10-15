@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Compound.Boxplot
 
 Generates a Box Plot compound SVG Visual showing statistical distribution

@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Attr.Txt
 
 Creates SVG attribute strings for text styling properties

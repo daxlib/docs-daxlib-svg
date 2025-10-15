@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.ClipPath
 
 Generates a reusable `#!xml <clipPath>` definition

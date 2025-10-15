@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Compound.Pill
 
 Generates a pill SVG compound (rounded rectangle with text centered inside)

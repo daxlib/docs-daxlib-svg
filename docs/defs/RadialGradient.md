@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.RadialGradient
 
 Generates a reusable `#!xml <radialGradient>` definition

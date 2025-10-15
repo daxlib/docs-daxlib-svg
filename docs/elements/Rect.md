@@ -1,6 +1,3 @@
----
-comments: true
----
 # Element.Rect
 
 Generates a `#!xml <rect>` element

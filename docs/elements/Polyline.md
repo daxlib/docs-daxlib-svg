@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Polyline
 
 Generates a `#!xml <polyline>` (connected points) element

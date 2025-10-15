@@ -1,31 +1,32 @@
 site_name: DaxLib.SVG
 site_url: https://daxlib.github.io/docs-daxlib-svg/
+repo_name: docs-daxlib-svg
 repo_url: https://github.com/daxlib/docs-daxlib-svg
 site_author: Jake Duddy
 site_description: A DAX User-Defined Functions (UDF) library designed to make creating SVG visuals in Power BI easier
 theme:
   name: material
-  custom_dir: overrides
   language: en
   favicon: assets/images/icon.png
   logo: assets/images/logo-dark.svg
+  custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue grey
-      accent: pink
+      primary: custom
+      accent: custom
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
-      accent: pink
+      primary: custom
+      accent: custom
       toggle:
         icon: material/toggle-switch-off
-        name: Switch to system preference  
+        name: Switch to light mode
   features:
     # - announce.dismiss
     # - content.action.edit
@@ -57,7 +58,6 @@ theme:
     - toc.integrate
   
 extra:
-  google_site_verification: SAsOJ1OUHiMcP4hI-eYBkBD6nbsLx6hc2nWjLqdCtd0
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/jakeduddy/
@@ -69,13 +69,17 @@ extra:
 plugins:
   - search
   - meta-descriptions
+  - social:
+      cards_layout_options:
+        background_color: "#117865"
 
 extra_css:
-  - assets/css/pill.css
-  - assets/css/codeblock.css
-  - assets/css/button.css
-  - assets/css/colorBlocks.css
-  - assets/css/cards.css
+  - stylesheets/pill.css
+  - stylesheets/codeblock.css
+  - stylesheets/button.css
+  - stylesheets/colorBlocks.css
+  - stylesheets/cards.css
+  - stylesheets/theme.css
 
 markdown_extensions:
   - abbr

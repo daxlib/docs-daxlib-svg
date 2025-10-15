@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.Rect
 
 Generates a reusable `#!xml <rect>` definition

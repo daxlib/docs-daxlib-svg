@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Def.GradientStop
 
 Generates a gradient `#!xml <stop>` element for use in SVG gradients

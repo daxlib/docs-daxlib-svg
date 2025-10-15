@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # SVG
 
 Wraps content in an SVG container for Power BI visualization

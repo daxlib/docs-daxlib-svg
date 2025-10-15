@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Ellipse
 
 Generates an `#!xml <ellipse>` element

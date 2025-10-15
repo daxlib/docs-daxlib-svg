@@ -1,7 +1,3 @@
----
-comments: true
----
-
 # Element.Polygon
 
 Generates a `#!xml <polygon>` (closed shape) element
